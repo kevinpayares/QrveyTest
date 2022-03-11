@@ -1,0 +1,69 @@
+.container{
+    float: left;
+    width: 10%;
+    margin-left: 100px;
+}
+
+.containerInput {
+    height: 550px;
+}
+
+.title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.containerCountriesBody{
+    position: relative;
+}
+
+.containerCountries{
+    position: absolute;
+    top: 0%;
+    width: 90%;
+    left: 30px;
+}
+
+.countryItem{
+    cursor: pointer;
+}
+
+.box {
+    position: relative;
+    float: left;
+    width: 50%;
+}
+
+.text{
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    left: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-size: 80px;
+    color: #09295E;
+    padding: 130px 0px 0px 66px;
+}
+
+.textAqua {
+    color:#0dcaf0
+}
+
+.imgWorld {
+    float: right;
+    width: 900px;
+}
+
+
+.InputPosition {
+    padding: 400px 0px 0px 122px;
+    position: absolute;
+}
+
+.noData {
+    position: fixed;
+    font-size: 40px;
+    color: #c7c7c7;
+    font-family: sans-serif; 
+    padding: 90px 0px 0px 45%;
+  }

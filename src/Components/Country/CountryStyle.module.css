@@ -1,0 +1,14 @@
+.containerItem {
+    text-align: left;
+}
+
+.img {
+    float: left;
+    width: 35px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
