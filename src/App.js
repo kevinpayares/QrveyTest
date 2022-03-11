@@ -3,7 +3,7 @@ import Country from "./Components/Country";
 import InputSearch from "./Components/InputSearch"
 import styles from "./App.module.css";
 import Modal from "./Components/Modal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 class App extends React.Component {
 
@@ -23,6 +23,7 @@ class App extends React.Component {
         this.searchCountry = this.searchCountry.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.getListFavorite = this.getListFavorite.bind(this);
     }
 
 
@@ -36,6 +37,16 @@ class App extends React.Component {
         }))
     }
 
+    getListFavorite(){
+        let listFavorite = JSON.parse(localStorage.getItem('listFavorite'));
+
+        if(listFavorite == null){
+            listFavorite = [];
+        }
+
+        return listFavorite;
+    }
+
     searchCountry (data, typeSearch){
         let newListCountry;
         if(typeSearch === "Show All"){
@@ -47,7 +58,8 @@ class App extends React.Component {
             }
 
         }else if(typeSearch === "Favorites"){
-            newListCountry = this.state.ListCountryAux
+
+            newListCountry = this.state.ListCountryAux.filter(c =>this.getListFavorite().includes(c.name.common))
             
         }else{
             
@@ -126,12 +138,20 @@ class App extends React.Component {
                                         {this.state.ListCountry.sort((a, b) => a.name.common > b.name.common ? 1 : -1)
                                         .map((country, index)=>{
                                             if(country.region === countient){
+                                                let isFavorite = false;
+                                                if(this.getListFavorite().includes(country.name.common)){
+                                                    isFavorite = true;
+                                                }
+
                                                 return(
                                                     <div key={index} className={styles.countryItem} 
                                                          onClick={() => this.openModal(country)} title={country.name.common}> 
-                                                        <Country    name={country.name.common}
-                                                                    img = {country.flags[0]}
-                                                        />
+                                                         <div>
+                                                            <Country    name={country.name.common}
+                                                                        img = {country.flags[0]}
+                                                                        isFavorite = {isFavorite}
+                                                            />
+                                                        </div>
                                                     </div>
                                                 )
                                             }
