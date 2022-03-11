@@ -59,7 +59,12 @@ class App extends React.Component {
 
         }else if(typeSearch === "Favorites"){
 
-            newListCountry = this.state.ListCountryAux.filter(c =>this.getListFavorite().includes(c.name.common))
+            if(data !== ""){
+                newListCountry = this.state.ListCountryAux.filter(c => c.name.common.toLowerCase().includes(data) && this.getListFavorite().includes(c.name.common))
+            }else{
+                newListCountry = this.state.ListCountryAux.filter(c =>this.getListFavorite().includes(c.name.common))
+            }
+
             
         }else{
             
@@ -68,6 +73,7 @@ class App extends React.Component {
             }else{
                 newListCountry = this.state.ListCountryAux.filter(c => c.region === typeSearch)
             }
+            
         }
         if(newListCountry.length == 0){
             this.setState({anyData: false})

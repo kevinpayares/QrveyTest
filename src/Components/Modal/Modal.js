@@ -20,12 +20,11 @@ class Modal extends React.Component{
         let nameCountry = this.props.countryDetail.name.common;
         let index;
         let listFavorite = JSON.parse(localStorage.getItem('listFavorite'));
-        
         if(listFavorite != null && listFavorite.includes(nameCountry)){
             
             this.setState({isFavorite: false})
             index = listFavorite.indexOf(nameCountry);
-            listFavorite.splice(index);
+            listFavorite.splice(index, 1);
             localStorage.setItem('listFavorite', JSON.stringify(listFavorite));
 
         }else{
